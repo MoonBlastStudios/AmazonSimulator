@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Boss\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Boss\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_AmazonSource.-462387198.00" t="ExcludeRecursive" />
+    <e p="E:\Github\AmazonSimulator\AmazonSource" t="IncludeRecursive">
+      <e p="AmazonSource.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Tools" t="Include">
+            <e p="BaseGameManager.cs" t="Include" />
+            <e p="Examples" t="Include">
+              <e p="RangeExample.cs" t="Include" />
+              <e p="RangeExample2.cs" t="Include" />
+            </e>
+            <e p="Range.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
