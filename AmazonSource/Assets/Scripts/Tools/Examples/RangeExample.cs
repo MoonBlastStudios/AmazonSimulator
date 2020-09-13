@@ -5,7 +5,7 @@ namespace Tools.Examples
 {
     public class RangeExample : MonoBehaviour
     {
-        [SerializeField] private Range m_range;
+        [SerializeField] private Range m_range = null;
         
         // Start is called before the first frame update
         private void Start()
