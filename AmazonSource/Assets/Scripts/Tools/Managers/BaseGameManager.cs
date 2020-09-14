@@ -1,10 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Tools.Managers
 {
     public class BaseGameManager : MonoBehaviour
     {
         private static BaseGameManager _instance;
+
+        private Camera m_camera;
+
+        protected virtual void Awake()
+        {
+            GetCamera();
+        }
 
         protected void BindInstance()
         {
@@ -16,9 +24,28 @@ namespace Tools.Managers
             else
             {
                 _instance = this;
+                DontDestroyOnLoad(gameObject);
             }
         }
 
+        private void GetCamera()
+        {
+            m_camera = Camera.main;
+        }
+
         public static BaseGameManager Instance => _instance;
+
+        public static Camera Cam
+        {
+            get
+            {
+                if (_instance != null)
+                {
+                    return _instance.m_camera;
+                }
+
+                throw new Exception("PLEASE PUT GAME MANAGER IN THE SCENE");
+            }
+        }
     }
 }
