@@ -11,6 +11,7 @@ namespace Tools.Managers
 
         protected virtual void Awake()
         {
+			BindInstance();
             GetCamera();
         }
 
