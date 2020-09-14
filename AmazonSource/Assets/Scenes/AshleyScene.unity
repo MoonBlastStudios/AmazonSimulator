@@ -268,6 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 5
+  m_screenRange:
+    m_min: 0.03
+    m_max: 0.97
   m_rigidbody2D: {fileID: 697030501}
 --- !u!1 &1639897817
 GameObject:
@@ -498,8 +501,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002395797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.025, y: -4.44, z: -0.10320933}
-  m_LocalScale: {x: 21.182566, y: 1, z: 1}
+  m_LocalPosition: {x: 0.072, y: -4.44, z: -0.10320933}
+  m_LocalScale: {x: 25.63131, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
