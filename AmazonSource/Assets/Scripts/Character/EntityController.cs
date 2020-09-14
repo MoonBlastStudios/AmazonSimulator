@@ -52,5 +52,11 @@ namespace Character
                 SetSpeed();
             }
         }
+
+        public void PlayerHit()
+        {
+            m_direction *= -1;
+            SetSpeed();
+        }
     }
 }
