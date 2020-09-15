@@ -5,6 +5,9 @@ namespace Tools.Managers
 {
     public class BaseGameManager : MonoBehaviour
     {
+        [Tooltip("The Custom Timescale that the game will run at, a number lower then 1 = slow motion, > 1 = fast forward")]
+        [Range(0, 1)]
+        [SerializeField] private float m_timeScale;
         private static BaseGameManager _instance;
 
         private Camera m_camera;

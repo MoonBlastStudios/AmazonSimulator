@@ -11,7 +11,8 @@ namespace Character
         [Tooltip("The speed at to which the character moves")]
         [SerializeField] private float m_speed = 0;
 
-        [SerializeField] private Range m_screenRange; 
+        [SerializeField] private Range m_screenRange = null;
+        
         [Header("Components")]
         [SerializeField] private Rigidbody2D m_rigidbody2D = null;
         //current direction
