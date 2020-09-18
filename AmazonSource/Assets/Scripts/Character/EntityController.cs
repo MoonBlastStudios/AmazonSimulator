@@ -40,7 +40,7 @@ namespace Character
         {
             //finds the position of the object the script is attached to in viewport space 
             var viewportPosition = CameraTools.GetViewportPosition(transform.position);
-            Debug.Log(viewportPosition);
+            //Debug.Log(viewportPosition);
             //when avatar hits edge of the screen, will make it change directions
             if (viewportPosition.x > m_screenRange.MAX && m_direction > 0)
             {
