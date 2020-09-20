@@ -58,5 +58,28 @@ namespace Tools
         {
             return m_currentTime;
         }
+
+        /// <summary>
+        /// Gets the Time Percentage Whether its the current time or the time remaining
+        /// </summary>
+        /// <param name="p_remaining">If True = Get % of time remaining, if false get total percentage</param>
+        /// <param name="p_int">Whether to return the value as a whole integer</param>
+        /// <returns></returns>
+        public float GetTimerPercentage(bool p_remaining = false, bool p_int = false)
+        {
+            float returnVal = 0;
+            
+            if (!p_remaining)
+            {
+                returnVal = (!p_int) ? (m_currentTime / m_maxTime) : (m_currentTime / m_maxTime) * 100;
+            }
+            else
+            {
+                var timeLeft = m_maxTime - m_currentTime;
+                returnVal = (!p_int) ? (timeLeft / m_maxTime) : (timeLeft / m_maxTime) * 100;
+            }
+
+            return returnVal;
+        }
     }
 }

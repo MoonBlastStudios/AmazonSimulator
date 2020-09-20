@@ -6,7 +6,7 @@ namespace AngeloExamples.UI
     //This script will simulate an example player
     public class UITest : MonoBehaviour
     {
-        [SerializeField] private CustomTimer m_increaseTimer = null;
+        //[SerializeField] private CustomTimer m_increaseTimer = null;
         [SerializeField] private int m_lifeCount = 5;
         
         // Start is called before the first frame update

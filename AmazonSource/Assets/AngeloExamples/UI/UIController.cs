@@ -7,10 +7,10 @@ namespace AngeloExamples.UI
     public class UIController : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private Transform m_heartHolder;
+        [SerializeField] private Transform m_heartHolder = null;
 
         [Header("Prefabs To Use")] 
-        [SerializeField] private GameObject m_heartPrefab;
+        [SerializeField] private GameObject m_heartPrefab = null;
         
         private static UIController _instance;
 
