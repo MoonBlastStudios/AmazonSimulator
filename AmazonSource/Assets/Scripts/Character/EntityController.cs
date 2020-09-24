@@ -12,6 +12,8 @@ namespace Character
         [SerializeField] private float m_speed = 0;
 
         [SerializeField] private Range m_screenRange = null;
+
+        [SerializeField] private int m_health;
         
         [Header("Components")]
         [SerializeField] private Rigidbody2D m_rigidbody2D = null;
@@ -22,6 +24,7 @@ namespace Character
         void Start()
         {
             SetSpeed();
+            HealthUi.CreateHearts(m_health);
         }
 
         // Update is called once per frame
@@ -58,6 +61,7 @@ namespace Character
         {
             m_direction *= -1;
             SetSpeed();
+            HealthUi.RemoveHeart();
         }
     }
 }
