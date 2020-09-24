@@ -1,4 +1,5 @@
-﻿using Tools;
+﻿using System.Timers;
+using Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,27 +11,32 @@ namespace Character
         //current speed
         [Tooltip("The speed at to which the character moves")]
         [SerializeField] private float m_speed = 0;
-
+        [SerializeField] private CustomTimer m_invulTimer;
         [SerializeField] private Range m_screenRange = null;
-
-        [SerializeField] private int m_health;
         
+        [SerializeField] private int m_health;
+        [Header("Collision Layers")] 
+        [SerializeField] private int m_normalLayer;
+        [SerializeField] private int m_invulLayer;
+
         [Header("Components")]
         [SerializeField] private Rigidbody2D m_rigidbody2D = null;
+        
         //current direction
         private float m_direction = 1;
-        
+        private bool m_invul;
+
         // Start is called before the first frame update
         void Start()
         {
             SetSpeed();
-            HealthUi.CreateHearts(m_health);
         }
 
         // Update is called once per frame
         void Update()
         {
             ChangeDirections();
+            Invulnerable();
         }
 
         private void SetSpeed()
@@ -57,11 +63,21 @@ namespace Character
             }
         }
 
+        private void Invulnerable()
+        {
+            if (!m_invul) return;
+            if (!m_invulTimer.Tick(Time.deltaTime)) return;
+
+            m_invul = false;
+            gameObject.layer = m_normalLayer;
+        }
+
         public void PlayerHit()
         {
             m_direction *= -1;
             SetSpeed();
-            HealthUi.RemoveHeart();
+            m_invul = true;
+            gameObject.layer = m_invulLayer;
         }
     }
 }

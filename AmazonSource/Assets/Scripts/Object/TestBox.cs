@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Character;
 using Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -45,7 +46,7 @@ public class TestBox : MonoBehaviour
 
         if (collisionGameObject.CompareTag(m_characterTag))
         {
-            HitPlayer();
+            HitPlayer(collisionGameObject);
         }
 
         if (collisionGameObject.CompareTag(m_boxTag))
@@ -97,8 +98,11 @@ public class TestBox : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void HitPlayer()
+    private void HitPlayer(GameObject p_hitObject)
     {
-        DestroyBox();
+        DestroyInstant();
+        var playerController = p_hitObject.GetComponent<EntityController>();
+        playerController.PlayerHit();
+
     }
 }

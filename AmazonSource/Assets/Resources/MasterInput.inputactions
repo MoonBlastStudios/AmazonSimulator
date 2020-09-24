@@ -1,0 +1,115 @@
+{
+    "name": "MasterInput",
+    "maps": [
+        {
+            "name": "Game",
+            "id": "9456ed18-8b5e-42c0-974f-b23e751d367a",
+            "actions": [
+                {
+                    "name": "LayerCam",
+                    "type": "PassThrough",
+                    "id": "43925ecb-e692-4526-b0fe-7721c586d83a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LayerCam1",
+                    "type": "PassThrough",
+                    "id": "9226802d-69b2-4f1a-94c7-547ac62421f5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LayerCam2",
+                    "type": "PassThrough",
+                    "id": "481352ca-ec59-418a-8381-0ced4778c5bf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LayerCam3",
+                    "type": "PassThrough",
+                    "id": "8d5ef4b0-c441-4d89-b303-ddd7586533d2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LayerCam4",
+                    "type": "PassThrough",
+                    "id": "018dfe6d-36a7-471c-8bc9-4ff6f64cb1bd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "24574f6c-0b54-4ef6-8577-92af97a30370",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LayerCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6a13573-fee4-4627-81c3-d0692df2cd4a",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LayerCam1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "582b374e-a6d5-467f-9255-5ed95e68e22d",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LayerCam2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c906ea7c-6c67-4ef7-9d74-341f97bbb40e",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LayerCam3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b91b9e57-982e-4014-a8cf-8c3e3e6f5748",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LayerCam4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": []
+        }
+    ]
+}

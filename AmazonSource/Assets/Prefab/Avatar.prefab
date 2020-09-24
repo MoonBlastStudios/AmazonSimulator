@@ -98,9 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 5
+  m_invulTimer:
+    m_maxTime: 0
   m_screenRange:
     m_min: 0.03
     m_max: 0.97
+  m_health: 0
+  m_normalLayer: 0
+  m_invulLayer: 9
   m_rigidbody2D: {fileID: 6364127315335523044}
 --- !u!50 &6364127315335523044
 Rigidbody2D:
