@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Managers;
 using Tools;
 using Tools.Managers;
 using UnityEngine;
@@ -44,10 +45,13 @@ namespace Character
             Debug.Log("Destroy");
             
             if (m_boxesInRange.Count <= 0) return;
+
+            var duplicateList = new List<GameObject>(m_boxesInRange);
             
-            foreach (var box in m_boxesInRange)
+            foreach (var box in duplicateList)
             {
                 Destroy(box);
+                GameManager.UpdateCurrentScore();
             }
         }
 

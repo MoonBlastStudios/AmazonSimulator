@@ -1,4 +1,5 @@
 ﻿using System.Timers;
+using AngeloExamples.UI;
 using Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,6 +11,7 @@ namespace Character
         [Header("Character Values")]
         //current speed
         [Tooltip("The speed at to which the character moves")]
+        [SerializeField] private int m_lifeCount = 0;
         [SerializeField] private float m_speed = 0;
         [SerializeField] private CustomTimer m_invulTimer;
         [SerializeField] private Range m_screenRange = null;
@@ -29,6 +31,7 @@ namespace Character
         // Start is called before the first frame update
         void Start()
         {
+            UIController.InitializeUI(m_lifeCount);
             SetSpeed();
         }
 
@@ -77,6 +80,7 @@ namespace Character
             m_direction *= -1;
             SetSpeed();
             m_invul = true;
+            UIController.DestroyHeart();
             gameObject.layer = m_invulLayer;
         }
     }

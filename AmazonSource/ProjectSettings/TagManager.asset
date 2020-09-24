@@ -7,6 +7,8 @@ TagManager:
   - Spawn
   - Floor
   - Box
+  - AimCurosor
+  - AimCursor
   layers:
   - Default
   - TransparentFX

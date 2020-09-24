@@ -12,7 +12,7 @@ namespace AngeloExamples.UI
         // Start is called before the first frame update
         private void Start()
         {
-            UIController.Instance.InitializeUI(m_lifeCount);
+            //UIController.Instance.InitializeUI(m_lifeCount);
             UIController.Instance.DestroyMultipleHearts(2);
         }
 

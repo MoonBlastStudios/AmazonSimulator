@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,12 @@ namespace AngeloExamples.UI
     public class UIController : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private Transform m_backgroundHeartHolder = null;
         [SerializeField] private Transform m_heartHolder = null;
+        [SerializeField] private TextMeshProUGUI m_scoreValueLabel;
 
         [Header("Prefabs To Use")] 
+        [SerializeField] private GameObject m_backgroundHeartPrefab = null;
         [SerializeField] private GameObject m_heartPrefab = null;
         
         private static UIController _instance;
@@ -49,9 +53,9 @@ namespace AngeloExamples.UI
         /// This function will startup the UI and add all the elements that we need
         /// </summary>
         /// <param name="p_lifeCount">The maximum life count of the player</param>
-        public void InitializeUI(int p_lifeCount)
+        public static void InitializeUI(int p_lifeCount)
         {
-            CreateHearts(p_lifeCount);
+            _instance.CreateHearts(p_lifeCount);
         }
 
         
@@ -63,7 +67,8 @@ namespace AngeloExamples.UI
         {
             for (var i = 0; i < p_lifeCount; i++)
             {
-                var heart = CreateHeart();
+                var heart = CreateSingleHeart();
+                var backgroundHeart = CreateSingleBackgroundHeart();
             }
         }
 
@@ -73,7 +78,8 @@ namespace AngeloExamples.UI
         /// </summary>
         public void IncreaseHeart()
         {
-            CreateHeart();
+            CreateSingleBackgroundHeart();
+            CreateSingleHeart();
         }
 
         /// <summary>
@@ -113,25 +119,34 @@ namespace AngeloExamples.UI
         /// Creates a new heart object and returns it
         /// </summary>
         /// <returns>the heart object to return</returns>
-        private GameObject CreateHeart()
+        private GameObject CreateSingleHeart()
         {
             return Instantiate(m_heartPrefab, Vector3.zero, Quaternion.identity, m_heartHolder);
+        }
+        
+        /// <summary>
+        /// Creates a new heart object and returns it
+        /// </summary>
+        /// <returns>the heart object to return</returns>
+        private GameObject CreateSingleBackgroundHeart()
+        {
+            return Instantiate(m_backgroundHeartPrefab, Vector3.zero, Quaternion.identity, m_backgroundHeartHolder);
         }
 
         /// <summary>
         /// Destroys a Single Heart
         /// </summary>
         /// <param name="p_destroy">Whether to use destroy or not</param>
-        private void DestroyHeart(bool p_destroy = false)
+        public static void DestroyHeart(bool p_destroy = false)
         {
             if (p_destroy)
             {
                 //Destroy the object completely from the holder 
-                Destroy(m_heartHolder.GetChild(0).gameObject);
+                Destroy(_instance.m_heartHolder.GetChild(0).gameObject);
             }
             else
             {
-                foreach (Transform heart in m_heartHolder)
+                foreach (Transform heart in _instance.m_heartHolder)
                 {
                     //Grab the heart gameobject
                     var heartGameObject = heart.gameObject;
@@ -146,6 +161,11 @@ namespace AngeloExamples.UI
                     break;
                 }
             }
+        }
+
+        public static void UpdateScore(int p_newScore)
+        {
+            _instance.m_scoreValueLabel.text = p_newScore.ToString();
         }
         
         public static UIController Instance => _instance;
