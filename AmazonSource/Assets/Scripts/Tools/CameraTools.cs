@@ -16,5 +16,12 @@ namespace Tools
         {
             return BaseGameManager.Cam.WorldToViewportPoint(p_position);
         }
+
+        public static Vector3 GetWorldPosition(Vector3 p_position, int p_zPosition)
+        {
+            var pos = BaseGameManager.Cam.ScreenToWorldPoint(p_position);
+            pos.z = p_zPosition;
+            return pos;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tools.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,13 +12,13 @@ public class CamController : MonoBehaviour
     
     private MasterInput m_masterInput = null;
     [SerializeField] private int m_activeLayer = -1;
+    
 
-
-    private void Awake()
+    private void Start()
     {
         Initialize();
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -27,13 +28,11 @@ public class CamController : MonoBehaviour
 
     private void Initialize()
     {
-        m_masterInput = new MasterInput();
-        m_masterInput.Enable();
-        m_masterInput.Game.LayerCam.performed += ActivateLayer1;
-        m_masterInput.Game.LayerCam1.performed += ActivateLayer2;
-        m_masterInput.Game.LayerCam2.performed += ActivateLayer3;
-        m_masterInput.Game.LayerCam3.performed += ActivateLayer4 ;
-        m_masterInput.Game.LayerCam4.performed += ActivateLayer5 ;
+        BaseGameManager.MasterInputs.Game.LayerCam.performed += ActivateLayer1;
+        BaseGameManager.MasterInputs.Game.LayerCam1.performed += ActivateLayer2;
+        BaseGameManager.MasterInputs.Game.LayerCam2.performed += ActivateLayer3;
+        BaseGameManager.MasterInputs.Game.LayerCam3.performed += ActivateLayer4 ;
+        BaseGameManager.MasterInputs.Game.LayerCam4.performed += ActivateLayer5 ;
     }
     
     

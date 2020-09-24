@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Character;
+using Managers;
 using Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -20,6 +21,7 @@ public class TestBox : MonoBehaviour
     [SerializeField] private string m_groundTag = "Ground";
     [SerializeField] private string m_characterTag = "Character";
     [SerializeField] private string m_boxTag = "Box";
+    [SerializeField] private string m_aimCursorTag = "AimCursor";
 
 
     private bool m_destroy = false;
@@ -87,7 +89,7 @@ public class TestBox : MonoBehaviour
             box.DestroyInstant();
         }
     }
-    
+
     private void DestroyBox()
     {
         m_destroy = true;
@@ -104,5 +106,23 @@ public class TestBox : MonoBehaviour
         var playerController = p_hitObject.GetComponent<EntityController>();
         playerController.PlayerHit();
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D p_other)
+    {
+        if (p_other.CompareTag(m_aimCursorTag))
+        {
+            GameManager.AimCursor.AddBoxToList(gameObject);
+            Debug.Log("Added To List");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D p_other)
+    {
+        if (p_other.CompareTag(m_aimCursorTag))
+        {
+            GameManager.AimCursor.RemoveFromList(gameObject);
+        }
     }
 }

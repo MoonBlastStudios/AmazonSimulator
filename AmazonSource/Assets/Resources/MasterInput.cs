@@ -57,6 +57,22 @@ public class @MasterInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""fa5035c4-4ef5-49ca-9fad-2ea06e45a17d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""e517f09e-75f3-40c1-b73e-107d432c2b6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -114,6 +130,28 @@ public class @MasterInput : IInputActionCollection, IDisposable
                     ""action"": ""LayerCam4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d664cb2-fcac-4c51-b59b-05a312f894f4"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4f49862-b01d-4d02-8b77-85d493e1bcae"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -133,6 +171,8 @@ public class @MasterInput : IInputActionCollection, IDisposable
         m_Game_LayerCam2 = m_Game.FindAction("LayerCam2", throwIfNotFound: true);
         m_Game_LayerCam3 = m_Game.FindAction("LayerCam3", throwIfNotFound: true);
         m_Game_LayerCam4 = m_Game.FindAction("LayerCam4", throwIfNotFound: true);
+        m_Game_MousePosition = m_Game.FindAction("MousePosition", throwIfNotFound: true);
+        m_Game_LeftClick = m_Game.FindAction("LeftClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -187,6 +227,8 @@ public class @MasterInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Game_LayerCam2;
     private readonly InputAction m_Game_LayerCam3;
     private readonly InputAction m_Game_LayerCam4;
+    private readonly InputAction m_Game_MousePosition;
+    private readonly InputAction m_Game_LeftClick;
     public struct GameActions
     {
         private @MasterInput m_Wrapper;
@@ -196,6 +238,8 @@ public class @MasterInput : IInputActionCollection, IDisposable
         public InputAction @LayerCam2 => m_Wrapper.m_Game_LayerCam2;
         public InputAction @LayerCam3 => m_Wrapper.m_Game_LayerCam3;
         public InputAction @LayerCam4 => m_Wrapper.m_Game_LayerCam4;
+        public InputAction @MousePosition => m_Wrapper.m_Game_MousePosition;
+        public InputAction @LeftClick => m_Wrapper.m_Game_LeftClick;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -220,6 +264,12 @@ public class @MasterInput : IInputActionCollection, IDisposable
                 @LayerCam4.started -= m_Wrapper.m_GameActionsCallbackInterface.OnLayerCam4;
                 @LayerCam4.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnLayerCam4;
                 @LayerCam4.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnLayerCam4;
+                @MousePosition.started -= m_Wrapper.m_GameActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnMousePosition;
+                @LeftClick.started -= m_Wrapper.m_GameActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnLeftClick;
             }
             m_Wrapper.m_GameActionsCallbackInterface = instance;
             if (instance != null)
@@ -239,6 +289,12 @@ public class @MasterInput : IInputActionCollection, IDisposable
                 @LayerCam4.started += instance.OnLayerCam4;
                 @LayerCam4.performed += instance.OnLayerCam4;
                 @LayerCam4.canceled += instance.OnLayerCam4;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
             }
         }
     }
@@ -259,5 +315,7 @@ public class @MasterInput : IInputActionCollection, IDisposable
         void OnLayerCam2(InputAction.CallbackContext context);
         void OnLayerCam3(InputAction.CallbackContext context);
         void OnLayerCam4(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
     }
 }
