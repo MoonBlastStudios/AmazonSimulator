@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &-5943105239850685148
 BoxCollider2D:
@@ -183,3 +183,4 @@ MonoBehaviour:
   m_groundTag: Floor
   m_characterTag: Player
   m_boxTag: Box
+  m_aimCursorTag: AimCursor
