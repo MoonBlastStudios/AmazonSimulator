@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using Tools;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -31,7 +32,6 @@ public class TestSpawnBox : MonoBehaviour
         //------------------------------------------------------------------------------
 
         spawnPoints = GameObjectTools.GetAllChildren(m_spawnPointsParent);
-        Debug.Log(spawnPoints.Count);
     }
 
     private void Update()
@@ -46,6 +46,10 @@ public class TestSpawnBox : MonoBehaviour
     {
         randomPosition = Random.Range(0, spawnPoints.Count - 1);           //This randomly selects one of the Spawn Points and stores its position.
         spawnPosition = spawnPoints[randomPosition];                    //This takes the randomly chosen Spawn Point and find it's transform.
-        Instantiate(box, spawnPosition.transform.position, Quaternion.Euler(0,0,m_randomRotationOffset.GetRandom()), m_boxParent); //This spawns a box at transform of the aforementioned Spawn Point.
+        var newBox = Instantiate(box, spawnPosition.transform.position, Quaternion.Euler(0,0,m_randomRotationOffset.GetRandom()), m_boxParent); //This spawns a box at transform of the aforementioned Spawn Point.
+        var testBox = newBox.GetComponent<TestBox>();
+        testBox.UpdateFall();
+        GameManager.AssignBox(testBox);
+        BoxManager.AddBox(testBox);
     }
 }

@@ -2,6 +2,7 @@
 using AngeloExamples.UI;
 using Tools;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Character
@@ -78,6 +79,11 @@ namespace Character
         public void PlayerHit()
         {
             m_direction *= -1;
+            m_lifeCount--;
+            
+            if(m_lifeCount == 0)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
             SetSpeed();
             m_invul = true;
             UIController.DestroyHeart();

@@ -10,8 +10,10 @@ using UnityEngine.Serialization;
 public class TestBox : MonoBehaviour
 {
     [Header("Data")] 
+    [SerializeField] private int m_camLayerID;
     [SerializeField] private float m_minimumScale = 0.4f;
     [SerializeField] private bool m_destructionBox;
+    [SerializeField] private float m_defaultSpeed;
     
     [Header("Components")]
     [SerializeField] private Rigidbody2D m_rigidbody2D;
@@ -23,9 +25,11 @@ public class TestBox : MonoBehaviour
     [SerializeField] private string m_boxTag = "Box";
     [SerializeField] private string m_aimCursorTag = "AimCursor";
 
+    
 
     private bool m_destroy = false;
     private Vector3 m_initialScale = Vector3.zero;
+    private bool m_grounded = false;
 
     private void Start()
     {
@@ -34,8 +38,37 @@ public class TestBox : MonoBehaviour
 
     private void Update()
     {
+        if(!m_grounded)
+            UpdateFall();
+        
         DestructionLogic();
     }
+
+    public void SetCamLayer(int p_pos, int p_unityLayer)
+    {
+        m_camLayerID = p_pos;
+        SetLayerRecursively(gameObject, p_unityLayer);
+    }
+
+    private void SetLayerRecursively(GameObject p_gameObject, int p_layer)
+    {
+        if (null == p_gameObject)
+        {
+            return;
+        }
+       
+        p_gameObject.layer = p_layer;
+       
+        foreach (Transform child in p_gameObject.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            SetLayerRecursively(child.gameObject, p_layer);
+        }
+    }
+    
     
     private void OnCollisionEnter2D(Collision2D p_collision)
     {
@@ -43,6 +76,7 @@ public class TestBox : MonoBehaviour
 
         if (collisionGameObject.CompareTag(m_groundTag))
         {
+            m_grounded = true;
             DestroyBox();   
         }
 
@@ -63,6 +97,12 @@ public class TestBox : MonoBehaviour
         m_initialScale = transform.localScale;
     }
 
+    public void UpdateFall()
+    {
+        var speed = GameManager.ValidateBox(m_camLayerID) ? 1 * GameManager.DefaultSpeed : GameManager.SlowdownValue * GameManager.DefaultSpeed;
+            m_rigidbody2D.velocity = new Vector2(0, -speed);
+    }
+    
     private void DestructionLogic()
     {
         //if we do not want to destroy return
@@ -76,6 +116,7 @@ public class TestBox : MonoBehaviour
         else
         {
             var timerPercentage = m_deathTimer.GetTimerPercentage(true);
+            BoxManager.RemoveBox(this);
             if (transform.localScale.x < m_minimumScale) return;
             transform.localScale = m_initialScale * timerPercentage;
         }
@@ -97,6 +138,7 @@ public class TestBox : MonoBehaviour
 
     public void DestroyInstant()
     {
+        BoxManager.RemoveBox(this);
         Destroy(gameObject);
     }
 

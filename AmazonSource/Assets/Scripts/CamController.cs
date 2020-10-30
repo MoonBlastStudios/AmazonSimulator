@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
 using Tools.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class CamController : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_layers = null;
+    [SerializeField] private int[] m_unityBindLayer = null;
     [SerializeField] private GameObject m_defaultCam = null;
     
     private MasterInput m_masterInput = null;
@@ -65,6 +68,8 @@ public class CamController : MonoBehaviour
     private void TriggerLayerLogic(int p_id, InputAction p_action)
     {
         var val = (int)p_action.ReadValue<float>();
+        BoxManager.UpdateBox();
+        
         Debug.Log(val);
         
         if(val == 1)
@@ -98,5 +103,26 @@ public class CamController : MonoBehaviour
         
         m_layers[p_activate].SetActive(true);
         m_activeLayer = p_activate;
+    }
+
+    public void GetRandomLayer(out int p_layer, out int p_gameLayer)
+    {
+        var pos = Random.Range(0, m_unityBindLayer.Length);
+        p_layer = pos;
+        p_gameLayer = m_unityBindLayer[pos];
+    }
+
+    public int GetCurrentLayer()
+    {
+        return m_activeLayer;
+    }
+
+    private void OnDestroy()
+    {
+        BaseGameManager.MasterInputs.Game.LayerCam.performed -= ActivateLayer1;
+        BaseGameManager.MasterInputs.Game.LayerCam1.performed -= ActivateLayer2;
+        BaseGameManager.MasterInputs.Game.LayerCam2.performed -= ActivateLayer3;
+        BaseGameManager.MasterInputs.Game.LayerCam3.performed -= ActivateLayer4 ;
+        BaseGameManager.MasterInputs.Game.LayerCam4.performed -= ActivateLayer5 ;
     }
 }

@@ -10,6 +10,8 @@ namespace Tools.Managers
         [Tooltip("The Custom Timescale that the game will run at, a number lower then 1 = slow motion, > 1 = fast forward")]
         [Range(0, 1)]
         [SerializeField] private float m_timeScale;
+        [SerializeField] private bool m_dontDestroyOnLoad;
+        
         protected static BaseGameManager _instance;
         private MasterInput m_masterInput;
         private Camera m_camera;
@@ -35,7 +37,9 @@ namespace Tools.Managers
             else
             {
                 _instance = this;
-                DontDestroyOnLoad(gameObject);
+                
+                if(m_dontDestroyOnLoad)
+                    DontDestroyOnLoad(gameObject);
             }
         }
 
