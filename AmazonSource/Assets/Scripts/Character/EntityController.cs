@@ -28,25 +28,35 @@ namespace Character
         //current direction
         private float m_direction = 1;
         private bool m_invul;
+        private static EntityController _instance = null;
+        private int m_defaultLife;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
+            _instance = this;
+            m_defaultLife = m_lifeCount;
             UIController.InitializeUI(m_lifeCount);
             SetSpeed();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             ChangeDirections();
             Invulnerable();
+            
         }
 
         private void SetSpeed()
         {
             //sets speed while keeping y velocity 
-            m_rigidbody2D.velocity = new Vector2(m_speed*m_direction, m_rigidbody2D.velocity.y);
+            var speed = m_speed * m_direction;
+
+            if (QtePanelController.Active)
+                speed *= QtePanelController.PauseTime;
+            
+            m_rigidbody2D.velocity = new Vector2(speed, m_rigidbody2D.velocity.y);
         }
         
         private void ChangeDirections()
@@ -76,13 +86,21 @@ namespace Character
             gameObject.layer = m_normalLayer;
         }
 
+        public static void SetMaxLife()
+        {
+            _instance.m_lifeCount = _instance.m_defaultLife;
+            UIController.ReEnableHearts();
+            //UIController.InitializeUI(_instance.m_lifeCount);
+        }
+        
+
         public void PlayerHit()
         {
             m_direction *= -1;
             m_lifeCount--;
             
             if(m_lifeCount == 0)
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                QtePanelController.EnablePanel();
             
             SetSpeed();
             m_invul = true;

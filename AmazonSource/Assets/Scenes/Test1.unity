@@ -699,6 +699,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
       propertyPath: m_aimCursor
       value: 
       objectReference: {fileID: 581149337}
@@ -741,6 +745,46 @@ PrefabInstance:
     - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
       propertyPath: m_timeScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[0]
+      value: Alibaba Sucks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[1]
+      value: AliExpress Is Stealing Products
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[2]
+      value: Amazon is The Best
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[3]
+      value: Its Prime Time
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[4]
+      value: Amazon.com
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[5]
+      value: MAC is Trash
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[6]
+      value: Same-Day Delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[7]
+      value: Who Uses a Mac in 2020
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[8]
+      value: Mac is Wack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587521086576812217, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
+      propertyPath: m_qtePhrases.Array.data[9]
+      value: Imagine Buynig a 1000$ Stand
       objectReference: {fileID: 0}
     - target: {fileID: 2587521086576812218, guid: d4c92f1dc28588d49b9423963049ab1f, type: 3}
       propertyPath: m_Name
