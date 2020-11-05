@@ -13,7 +13,11 @@ namespace Managers
         [Header("Components")] 
         [SerializeField] private CamController m_camController;
         [SerializeField] private TrackMouse m_aimCursor;
-        
+
+
+        [Header("QTE")] 
+        [SerializeField] private string[] m_qtePhrases;
+
         [Header("Layer Data")]
         [SerializeField] private float[] m_layerSpeeds;
         [SerializeField] private float m_slowdownValue;
@@ -87,6 +91,8 @@ namespace Managers
         }
 
         public static float DefaultSpeed => Manager().m_defaultValue;
+
+        public static string[] QtePhrases =>  Manager().m_qtePhrases;
 
         public static float SlowdownValue => Manager().m_slowdownValue;
     }

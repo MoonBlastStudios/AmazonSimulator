@@ -100,6 +100,10 @@ public class TestBox : MonoBehaviour
     public void UpdateFall()
     {
         var speed = GameManager.ValidateBox(m_camLayerID) ? 1 * GameManager.DefaultSpeed : GameManager.SlowdownValue * GameManager.DefaultSpeed;
+
+        if (QtePanelController.Active)
+            speed *= QtePanelController.PauseTime;
+        
             m_rigidbody2D.velocity = new Vector2(0, -speed);
     }
     

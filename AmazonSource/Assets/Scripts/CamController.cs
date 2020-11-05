@@ -119,6 +119,8 @@ public class CamController : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (BaseGameManager.Instance == null) return;
+        
         BaseGameManager.MasterInputs.Game.LayerCam.performed -= ActivateLayer1;
         BaseGameManager.MasterInputs.Game.LayerCam1.performed -= ActivateLayer2;
         BaseGameManager.MasterInputs.Game.LayerCam2.performed -= ActivateLayer3;

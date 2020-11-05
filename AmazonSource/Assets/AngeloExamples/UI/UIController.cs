@@ -169,5 +169,13 @@ namespace AngeloExamples.UI
         }
         
         public static UIController Instance => _instance;
+
+        public static void ReEnableHearts()
+        {
+            foreach (Transform heart in _instance.m_heartHolder)
+            {
+                heart.gameObject.SetActive(true);
+            }
+        }
     }
 }

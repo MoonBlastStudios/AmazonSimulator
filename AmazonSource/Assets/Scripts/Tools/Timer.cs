@@ -81,5 +81,10 @@ namespace Tools
 
             return returnVal;
         }
+
+        public void Reset()
+        {
+            m_currentTime = 0;
+        }
     }
 }
